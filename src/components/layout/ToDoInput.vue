@@ -35,7 +35,8 @@ export default {
             if(this.newTodoItem == null || this.newToDoItemDueDate == null) {
                 //에러처리
             } else {
-                localStorage.setItem(this.newTodoItem, this.newToDoItemDueDate)
+                this.$emit('saveToDos', [this.newTodoItem, this.newToDoItemDueDate])
+                this.clearInputBoxes()
             }
         },
         clearInputBoxes() {

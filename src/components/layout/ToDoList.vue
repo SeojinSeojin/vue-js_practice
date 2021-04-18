@@ -1,27 +1,14 @@
 <template>
   <div class="collection with-header">
     <div href="#!" class="collection-header"><h4>Cheer Up!</h4></div>
+    <div class="collection-item" v-bind:key="todoItem" v-for="todoItem in propsdata">{{todoItem[0]}}<span class="badge">{{todoItem[1]}}</span></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "ToDoCollection",
-  props: {
-    msg: String
-  },
-  data() {
-    return{
-      todoItems:[]
-    }
-  },
-  created() {
-    if(localStorage.length > 0) {
-      for(let i=0;i<localStorage.length; i++) {
-        this.todoItems.push(localStorage.key(i));
-      }
-    }
-  }
+  props: ["propsdata"]
 };
 </script>
 
