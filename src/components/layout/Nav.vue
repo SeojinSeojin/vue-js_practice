@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="nav-wrapper">
-      <img src="../../assets/logo.png" alt="Vue Logo">
+      <img class="brand-logo center" src="../../assets/logo.png" alt="Vue Logo">
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Sass</a></li>
@@ -21,13 +21,9 @@
 </template>
 
 <script>
-import M from "materialize-css"
 
 export default {
-  name: "Nav",
-  mounted: function(){
-    M.AutoInit();
-  }
+  name: "Nav"
 };
 </script>
 
@@ -40,5 +36,6 @@ export default {
     }
     .nav-wrapper {
         background-color: #426b55;
+        box-shadow:  0px 10px 50px #989898;
     }
 </style>

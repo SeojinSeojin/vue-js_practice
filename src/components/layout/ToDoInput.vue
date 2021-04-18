@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s5">
           <input id="todo_input" type="text" v-model="newTodoItem">
           <label for="todo_input">Add Your To Dos Here</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s4">
           <input id="todo_due_date" type="text" class="datepicker">
           <label for="todo_due_date">Due Date</label>
         </div>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style>
-.btn-floating {
-    background-color: #426b55;
-}
+    .btn-floating {
+        background-color: #426b55;
+    }
 </style>

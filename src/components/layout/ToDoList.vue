@@ -13,5 +13,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .collection {
+    min-height: 20vh;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
 </style>

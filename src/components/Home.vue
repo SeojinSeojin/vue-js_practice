@@ -63,7 +63,16 @@ export default {
     width: 100%;
     max-width: 650px;
   }
-
+  .collection {
+    border-radius: 1rem;
+    box-shadow:  0px 20px 50px #989898,
+             0px -20px 50px #ffffff;
+    transition: .4s;
+  }
+  .collection:hover {
+    box-shadow:  0px 20px 50px #888888,
+             0px -20px 50px #f3f3f3;
+  }
   h4 {
     text-align: center;
   }

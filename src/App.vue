@@ -8,6 +8,7 @@
 import Home from "./components/Home.vue";
 import Nav from "./components/layout/Nav.vue";
 import Footer from "./components/layout/Footer.vue"
+import M from "materialize-css"
 
 export default {
   name: "App",
@@ -15,6 +16,9 @@ export default {
     Home,
     Nav,
     Footer
+  },
+  mounted: function(){
+    M.AutoInit();
   }
 };
 </script>
