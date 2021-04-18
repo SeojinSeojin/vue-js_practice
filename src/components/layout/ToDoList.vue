@@ -9,6 +9,18 @@ export default {
   name: "ToDoCollection",
   props: {
     msg: String
+  },
+  data() {
+    return{
+      todoItems:[]
+    }
+  },
+  created() {
+    if(localStorage.length > 0) {
+      for(let i=0;i<localStorage.length; i++) {
+        this.todoItems.push(localStorage.key(i));
+      }
+    }
   }
 };
 </script>

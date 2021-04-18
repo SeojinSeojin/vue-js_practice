@@ -32,7 +32,15 @@ export default {
             const dueMonth = monthsShort.indexOf(dueMonthShort) + 1
             const dueDay = dueDate.split(" ")[2]
             this.newToDoItemDueDate = `${dueYear}/${dueMonth}/${dueDay}`
-            console.log(this.newToDoItemDueDate)
+            if(this.newTodoItem == null || this.newToDoItemDueDate == null) {
+                //에러처리
+            } else {
+                localStorage.setItem(this.newTodoItem, this.newToDoItemDueDate)
+            }
+        },
+        clearInputBoxes() {
+            this.newToDoItemDueDate = ""
+            this.newTodoItem = ""
         }
     }
 }
