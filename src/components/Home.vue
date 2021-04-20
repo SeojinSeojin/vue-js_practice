@@ -41,6 +41,7 @@ export default {
       if(localStorage.getItem("TODOLIST") == null) {
           const newTL = [[item, duedate]]
           localStorage.setItem("TODOLIST", JSON.stringify(newTL))
+          this.todoItems = newTL
       } else {
           const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
           console.log(savedTL)
