@@ -1,7 +1,8 @@
 <template>
+  <div class="background"></div>
   <div class="home-container">
     <div class="home-sub">
-      <h4>{{ msg }}</h4>
+      <h4 class="blured">{{ msg }}</h4>
       <ToDoInput v-on:saveToDos="saveToDos"/>
       <ToDoCollection v-bind:propsdata="todoItems" />
     </div>
@@ -54,27 +55,57 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+  .blured {
+    filter: blur(0.5px);
+  }
   .home-container {
     display: flex;
     justify-content: center;
+  }
+  .background {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/sea-unsplash.jpg");
+    filter: blur(50px);
   }
   .home-sub {
     height:90vh;
     width: 100%;
     max-width: 650px;
+    z-index: 200;
   }
   .collection {
-    border-radius: 1rem;
+    border-radius: 1rem!important;
     box-shadow:  0px 20px 50px #989898,
-             0px -20px 50px #ffffff;
+             0px -5px 30px #f3f3f3;
     transition: .4s;
+    background-color: rgba(255, 255, 255, 0.5)!important;
+    backdrop-filter: blur(5px);
   }
   .collection:hover {
     box-shadow:  0px 20px 50px #888888,
-             0px -20px 50px #f3f3f3;
+             0px -5px 30px #f3f3f3;
+  }
+  .collection-header, .collection-item {
+    background: transparent;
+    background-color: rgba(255, 255, 255, 0)!important;
   }
   h4 {
     text-align: center;
+  }
+  .swal2-popup {
+    background-color: rgba(255, 255, 255, 0.6)!important;
+    backdrop-filter: blur(8px);
+  }
+  .swal2-success-circular-line-right, .swal2-success-circular-line-left, .swal2-success-fix {
+    background-color: rgba(255, 255, 255, 0)!important;
+  }
+  .material-tooltip {
+    background-color: rgba(200, 200, 200, 0.3)!important;
+    backdrop-filter: blur(10px);
+    filter: blur(0.5px);
   }
 </style>
