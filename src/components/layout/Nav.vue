@@ -29,13 +29,23 @@ export default {
 
 <style scoped>
     img {
-        height: 10vh;
+        height: 70px;
     }
     nav {
-        height:10vh;
+        height:70px;
+        background-color: transparent
     }
     .nav-wrapper {
-        background-color: #426b55;
         box-shadow:  0px 10px 50px #989898;
+        background-color: #426b5588;
+        backdrop-filter: blur(5px);
+        position: fixed;
+        width: 100%;
+        height: 70px;
+        z-index: 999;
+    }
+    .sidenav {
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(5px);
     }
 </style>

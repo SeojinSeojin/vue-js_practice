@@ -32,7 +32,8 @@ export default {
 
 <style scoped>
     footer {
-        background-color: #426b55;
         box-shadow:  0px -10px 50px #989898;
+        background-color: #426b5588;
+        backdrop-filter: blur(5px);
     }
 </style>
