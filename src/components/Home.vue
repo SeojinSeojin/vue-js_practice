@@ -4,7 +4,7 @@
     <div class="home-sub">
       <h4 class="blured">{{ msg }}</h4>
       <ToDoInput v-on:saveToDos="saveToDos"/>
-      <ToDoCollection v-bind:propsdata="todoItems" v-on:deleteToDos="deleteToDos" />
+      <ToDoCollection v-bind:propsdata="todoItems" v-on:deleteToDos="deleteToDos" v-on:editToDos="editToDos" />
     </div>
   </div>
 </template>
@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     saveToDos(todo) {
-      console.log("home - saveToDos() called")
       const item = todo[0]
       const duedate = todo[1]
       if(localStorage.getItem("TODOLIST") == null) {
@@ -52,7 +51,6 @@ export default {
       }
     },
     deleteToDos(todo) {
-      console.log("home - deleteToDos() called")
       const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
       savedTL.forEach(t => {
         if(t[0]==todo[0] & t[1]==todo[1]){
@@ -62,6 +60,11 @@ export default {
       console.log(savedTL)
       localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
       this.todoItems = savedTL
+    },
+    editToDos(todo) {
+      console.log(todo)
+      this.deleteToDos([todo[0], todo[1]])
+      this.saveToDos([todo[2], todo[1]])
     }
   }
 };

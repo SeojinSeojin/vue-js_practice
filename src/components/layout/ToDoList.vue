@@ -5,8 +5,8 @@
       {{todoItem[0]}}
       <span class="badge">
         <i class="material-icons tooltipped" data-position="left" data-tooltip="Complete" v-on:click="onCompleteTodo(todoItem[0], todoItem[1])">check</i>
-        <i class="material-icons tooltipped" data-position="top" data-tooltip="Edit" v-on:click="onModifyTodo(todoItem[0])">edit</i>
-        <i class="material-icons tooltipped" data-position="right" data-tooltip="Delete" v-on:click="onGiveupTodo(todoItem[0])">delete_forever</i>
+        <i class="material-icons tooltipped" data-position="top" data-tooltip="Edit" v-on:click="onModifyTodo(todoItem[0], todoItem[1])">edit</i>
+        <i class="material-icons tooltipped" data-position="right" data-tooltip="Delete" v-on:click="onGiveupTodo(todoItem[0], todoItem[1])">delete_forever</i>
         {{todoItem[1]}}
       </span>
     </div>
@@ -33,7 +33,7 @@ export default {
         }
       })
     },
-    onGiveupTodo : function(targetTodo) {
+    onGiveupTodo : function(targetTodo, targetDueDate) {
       this.$swal.fire({
         title:`Give Up ${targetTodo}?`,
         text:"You won't be able to revert this!",
@@ -41,14 +41,14 @@ export default {
         confirmButtonText: "Yes"
       }).then((result)=>{
         if (result.isConfirmed) {
-          this.$emit('deleteToDos', targetTodo)
+          this.$emit('deleteToDos', [targetTodo, targetDueDate])
           this.$swal.fire(
             `Deleted ${targetTodo}`, "Cheer Up!", 'error'
           )
         }
       })
     },
-    onModifyTodo: function(targetTodo) {
+    onModifyTodo: function(targetTodo, targetDueDate) {
       this.$swal.fire({
         title: `Edit ${targetTodo}`,
         input: "text",
@@ -61,6 +61,7 @@ export default {
         }
       }).then((text)=>{
         const newTodo = text.value
+        this.$emit('editToDos', [targetTodo, targetDueDate, newTodo])
         this.$swal.fire(
           `Edited ${targetTodo} -> ${newTodo}`, `Keep Going on ${newTodo}`, 'success'
         )
