@@ -77,6 +77,7 @@ export default {
     max-height: 60vh;
     overflow-y: auto;
     transition: .3s;
+    padding-bottom: 3rem;
   }
   .material-icons {
     cursor:pointer;

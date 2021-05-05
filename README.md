@@ -1,5 +1,8 @@
 # vue-api-project
 
+## View Site On
+https://naughty-shannon-3ce817.netlify.app/
+
 ## Project setup
 ```
 npm install
