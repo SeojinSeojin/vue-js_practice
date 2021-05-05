@@ -4,7 +4,7 @@
     <div class="collection-item" v-bind:key="todoItem" v-for="todoItem in propsdata">
       {{todoItem[0]}}
       <span class="badge">
-        <i class="material-icons tooltipped" data-position="left" data-tooltip="Complete" v-on:click="onCompleteTodo(todoItem[0])">check</i>
+        <i class="material-icons tooltipped" data-position="left" data-tooltip="Complete" v-on:click="onCompleteTodo(todoItem[0], todoItem[1])">check</i>
         <i class="material-icons tooltipped" data-position="top" data-tooltip="Edit" v-on:click="onModifyTodo(todoItem[0])">edit</i>
         <i class="material-icons tooltipped" data-position="right" data-tooltip="Delete" v-on:click="onGiveupTodo(todoItem[0])">delete_forever</i>
         {{todoItem[1]}}
@@ -18,7 +18,7 @@ export default {
   name: "ToDoCollection",
   props: ["propsdata"],
   methods: {
-    onCompleteTodo : function(targetTodo) {
+    onCompleteTodo : function(targetTodo, targetDueDate) {
       this.$swal.fire({
         title:`Completed ${targetTodo}?`,
         text:"You won't be able to revert this!",
@@ -26,7 +26,7 @@ export default {
         confirmButtonText: "Yes"
       }).then((result)=>{
         if (result.isConfirmed) {
-          this.$emit('deleteToDos', targetTodo)
+          this.$emit('deleteToDos', [targetTodo, targetDueDate])
           this.$swal.fire(
             `Completed ${targetTodo}`, "Great Job", 'success'
           )

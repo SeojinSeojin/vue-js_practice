@@ -50,10 +50,19 @@ export default {
           localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
           this.todoItems = savedTL
       }
+    },
+    deleteToDos(todo) {
+      console.log("home - deleteToDos() called")
+      const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
+      savedTL.forEach(t => {
+        if(t[0]==todo[0] & t[1]==todo[1]){
+          savedTL.pop(t)
+        }
+      })
+      console.log(savedTL)
+      localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
+      this.todoItems = savedTL
     }
-  },
-  deleteToDos(todo) {
-    console.log("home - deletetodos called", todo)
   }
 };
 </script>
