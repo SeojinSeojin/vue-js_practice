@@ -26,6 +26,7 @@ export default {
         confirmButtonText: "Yes"
       }).then((result)=>{
         if (result.isConfirmed) {
+          this.$emit('deleteToDos', targetTodo)
           this.$swal.fire(
             `Completed ${targetTodo}`, "Great Job", 'success'
           )
@@ -40,6 +41,7 @@ export default {
         confirmButtonText: "Yes"
       }).then((result)=>{
         if (result.isConfirmed) {
+          this.$emit('deleteToDos', targetTodo)
           this.$swal.fire(
             `Deleted ${targetTodo}`, "Cheer Up!", 'error'
           )

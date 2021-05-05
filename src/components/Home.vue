@@ -4,7 +4,7 @@
     <div class="home-sub">
       <h4 class="blured">{{ msg }}</h4>
       <ToDoInput v-on:saveToDos="saveToDos"/>
-      <ToDoCollection v-bind:propsdata="todoItems" />
+      <ToDoCollection v-bind:propsdata="todoItems" v-on:deleteToDos="deleteToDos" />
     </div>
   </div>
 </template>
@@ -51,6 +51,9 @@ export default {
           this.todoItems = savedTL
       }
     }
+  },
+  deleteToDos(todo) {
+    console.log("home - deletetodos called", todo)
   }
 };
 </script>
