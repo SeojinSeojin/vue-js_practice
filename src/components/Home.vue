@@ -65,11 +65,8 @@ export default {
     },
     deleteToDos(todo) {
       const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
-      savedTL.forEach(t => {
-        if(t[0]==todo[0] & t[1]==todo[1]){
-          savedTL.pop(t)
-        }
-      })
+      const delIdx = savedTL.findIndex(function(it){return (it[0]==todo[0] & it[1]==todo[1])})
+      savedTL.splice(delIdx, 1)
       console.log(savedTL)
       localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
       this.todoItems = savedTL
