@@ -1,15 +1,19 @@
 <template>
+  <Nav v-on:handleCompletes="handleCompletes"/>
+  <Completes v-if="showComplete" v-bind:propsdata="completes"/>
   <div class="background"></div>
   <div class="home-container">
     <div class="home-sub">
       <h4 class="blured">{{ msg }}</h4>
       <ToDoInput v-on:saveToDos="saveToDos"/>
-      <ToDoCollection v-bind:propsdata="todoItems" v-on:deleteToDos="deleteToDos" v-on:editToDos="editToDos" />
+      <ToDoCollection v-bind:propsdata="todoItems" v-on:deleteToDos="deleteToDos" v-on:editToDos="editToDos" v-on:saveCompletes="saveCompletes"/>
     </div>
   </div>
 </template>
 
 <script>
+import Nav from "./layout/Nav"
+import Completes from "./layout/Completes"
 import ToDoCollection from "./layout/ToDoList.vue"
 import ToDoInput from "./layout/ToDoInput.vue"
 
@@ -20,7 +24,9 @@ export default {
   },
   data() {
     return{
-      todoItems: []
+      todoItems: [],
+      completes: [],
+      showComplete: false
     }
   },
   created() {
@@ -29,10 +35,17 @@ export default {
       const parsedTodoList = JSON.parse(todoList)
       this.todoItems = parsedTodoList
     }
+    const completeList = localStorage.getItem("COMPLETES")
+    if(completeList !== null) {
+      const parsedCompletes = JSON.parse(completeList)
+      this.completes = parsedCompletes
+    }
   },
   components: {
+    Nav,
     ToDoCollection,
-    ToDoInput
+    ToDoInput,
+    Completes
   },
   methods: {
     saveToDos(todo) {
@@ -65,6 +78,21 @@ export default {
       console.log(todo)
       this.deleteToDos([todo[0], todo[1]])
       this.saveToDos([todo[2], todo[1]])
+    },
+    saveCompletes(complete) {
+      if(localStorage.getItem("COMPLETES") == null) {
+        const newCM = [complete]
+        localStorage.setItem("COMPLETES", JSON.stringify(newCM))
+        this.completes = newCM
+      } else {
+        const savedCM = JSON.parse(localStorage.getItem("COMPLETES"))
+        savedCM.push(complete)
+        localStorage.setItem("COMPLETES", JSON.stringify(savedCM))
+        this.completes = savedCM
+      }
+    },
+    handleCompletes(){
+      this.showComplete = !(this.showComplete)
     }
   }
 };

@@ -26,7 +26,9 @@ export default {
         confirmButtonText: "Yes"
       }).then((result)=>{
         if (result.isConfirmed) {
+          const now = new Date()
           this.$emit('deleteToDos', [targetTodo, targetDueDate])
+          this.$emit('saveCompletes', [targetTodo, `${now.getFullYear()}/${now.getMonth()}/${now.getDate()}`])
           this.$swal.fire(
             `Completed ${targetTodo}`, "Great Job", 'success'
           )
