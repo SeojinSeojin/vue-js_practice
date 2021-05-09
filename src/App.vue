@@ -1,12 +1,12 @@
 <template>
-  <Home msg="서진아 힘내!"/>
-  <Footer/>
+  <Home msg="Vo Do List" />
+  <Footer />
 </template>
 
 <script>
 import Home from "./components/Home.vue";
-import Footer from "./components/layout/Footer.vue"
-import M from "materialize-css"
+import Footer from "./components/layout/Footer.vue";
+import M from "materialize-css";
 
 export default {
   name: "App",
@@ -14,7 +14,7 @@ export default {
     Home,
     Footer
   },
-  mounted: function(){
+  mounted: function() {
     M.AutoInit();
   }
 };

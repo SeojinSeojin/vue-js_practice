@@ -24,7 +24,6 @@ export default {
     },
     methods: {
         addToDo() {
-            console.log(this.newTodoItem)
             const dueYear = document.querySelector(".year-text").textContent
             const dueDate = document.querySelector(".date-text").textContent
             const dueMonthShort = dueDate.split(" ")[1]

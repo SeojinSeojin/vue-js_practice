@@ -57,7 +57,6 @@ export default {
           this.todoItems = newTL
       } else {
           const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
-          console.log(savedTL)
           savedTL.push([item,duedate])
           localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
           this.todoItems = savedTL
@@ -67,12 +66,10 @@ export default {
       const savedTL = JSON.parse(localStorage.getItem("TODOLIST"))
       const delIdx = savedTL.findIndex(function(it){return (it[0]==todo[0] & it[1]==todo[1])})
       savedTL.splice(delIdx, 1)
-      console.log(savedTL)
       localStorage.setItem("TODOLIST", JSON.stringify(savedTL))
       this.todoItems = savedTL
     },
     editToDos(todo) {
-      console.log(todo)
       this.deleteToDos([todo[0], todo[1]])
       this.saveToDos([todo[2], todo[1]])
     },
